@@ -1,9 +1,13 @@
 <h1>Terrible article show page</h1>
 <h3><%= @article.name %></h1>
-<p><%= @article.body %></p>
 
+<p> Article body: <%= @article.body %></p>
+
+<h2>Comments section</h2>
 <p>
   <% @article.comments.each do |com| %>
     <%= com.body.html_safe %>
   <% end %>
 </p>
+
+<%= link_to "New Comment", comments_new_path(article: @article.id) %>

@@ -23,6 +23,8 @@ Complete this tutorial first:
 * implement caching
 * implement eager loading vs lazy loading on the right pages.
 * replace Ruby lookups with ActiveRecord methods.
+* fix html_safe issue.
+* page cache or fragment cache the home page
 
 
 ##### Ruby vs ActiveRecord
@@ -67,3 +69,8 @@ The danger is if comment body are user-generated input...which they are.
 See [here](http://stackoverflow.com/questions/4251284/raw-vs-html-safe-vs-h-to-unescape-html)
 
 Understand now? Fix the problem.
+
+
+##### Caching
+
+[fragment caching](http://guides.rubyonrails.org/caching_with_rails.html#fragment-caching)

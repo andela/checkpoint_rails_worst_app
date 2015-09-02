@@ -1,0 +1,12 @@
+<%= form_for @comment do |f| %>
+  <%= f.label :author %>
+  <%= f.text_field :author %>
+  <br>
+
+  <%= f.label :body %>
+  <%= f.text_area :body, size: "60x12" %>
+
+  <%= f.hidden_field :article, value: @article.id %>
+  
+  <%= f.submit "Create" %>
+<% end %>
