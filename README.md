@@ -16,7 +16,34 @@ Well, let's focus on improving the view and the querying!
 Complete this tutorial first:
 [Jumpstart Lab Tutorial on Querying](http://tutorials.jumpstartlab.com/topics/performance/queries.html)
 
+
+
 ### Requirements
 * add an index to the right columns
 * implement caching
 * implement eager loading vs lazy loading on the right pages.
+* replace ruby lookups with ActiveRecord methods.
+
+
+##### Ruby vs ActiveRecord
+
+Let's try to get some ids from our Article model.
+
+Look at Ruby:
+```ruby
+puts Benchmark.measure {Article.select(:id).collect{|a| a.id}}
+  Article Load (2.6ms)  SELECT "articles"."id" FROM "articles"
+  0.020000   0.000000   0.020000 (  0.021821)
+```
+
+The real time is 0.021821 for the Ruby query.
+
+vs ActiveRecord
+
+```ruby
+puts Benchmark.measure {Article.pluck(:id)}
+   (3.2ms)  SELECT "articles"."id" FROM "articles"
+  0.000000   0.000000   0.000000 (  0.006992)
+```
+
+The real time is 0.006992 for the AR query. Ruby is about 300% slower.
