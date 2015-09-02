@@ -15,3 +15,8 @@ Well, let's focus on improving the view and the querying!
 
 Complete this tutorial first:
 [Jumpstart Lab Tutorial on Querying](http://tutorials.jumpstartlab.com/topics/performance/queries.html)
+
+### Requirements
+* add an index to the right columns
+* implement caching
+* implement eager loading vs lazy loading on the right pages.
