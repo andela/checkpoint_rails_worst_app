@@ -26,7 +26,7 @@ Complete this tutorial first:
 * fix html_safe issue.
 * page cache or fragment cache the home page
 
-##### index some columns. But what should we index
+##### Index some columns. But what should we index
 
 [great explanation of how to index columns and when](http://tutorials.jumpstartlab.com/topics/performance/queries.html#indices)
 
