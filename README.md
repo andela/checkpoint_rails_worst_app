@@ -1,3 +1,11 @@
+# Andela Rails Checkpoint #3
+
+1. Git clone this app and follow the instructions below.
+
+```bash
+git clone git@github.com:andela/checkpoint_rails_worst_app.git
+```
+
 ### This is one of the worst performing Rails apps ever.
 
 Currently, the home page takes this long to load:
@@ -16,8 +24,6 @@ Well, let's focus on improving the view and the querying!
 Complete this tutorial first:
 [Jumpstart Lab Tutorial on Querying](http://tutorials.jumpstartlab.com/topics/performance/queries.html)
 
-
-
 # Requirements for this checkpoint
 * add an index to the right columns
 * implement caching
@@ -29,6 +35,15 @@ Complete this tutorial first:
 ##### Index some columns. But what should we index
 
 [great explanation of how to index columns and when](http://tutorials.jumpstartlab.com/topics/performance/queries.html#indices)
+
+Our non-performant app has many opportunities to index. Just look at our associations. There are many foreign keys in our database...
+
+```ruby
+class Article < ActiveRecord::Base
+  belongs_to :author
+  has_many :comments
+end
+```
 
 ##### Ruby vs ActiveRecord
 
