@@ -5,5 +5,10 @@ class Author < ActiveRecord::Base
     count.times do
       Fabricate(:author)
     end
+    first.articles << Article.create(name: "some commenter", body: "some body")
+  end
+
+  def self.most_prolific_writer
+    all.sort_by{|a| a.articles.count }.last
   end
 end

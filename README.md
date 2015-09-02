@@ -18,7 +18,7 @@ Complete this tutorial first:
 
 
 
-### Requirements
+# Requirements for this checkpoint
 * add an index to the right columns
 * implement caching
 * implement eager loading vs lazy loading on the right pages.
@@ -26,6 +26,9 @@ Complete this tutorial first:
 * fix html_safe issue.
 * page cache or fragment cache the home page
 
+##### index some columns. But what should we index
+
+[great explanation of how to index columns and when](http://tutorials.jumpstartlab.com/topics/performance/queries.html#indices)
 
 ##### Ruby vs ActiveRecord
 
@@ -49,6 +52,13 @@ puts Benchmark.measure {Article.pluck(:id)}
 ```
 The real time is 0.006992 for the AR query. Ruby is about 300% slower.
 
+So this code is not well-written in the Author model:
+
+```ruby
+def self.most_prolific_writer
+  all.sort_by{|a| a.articles.count }.last
+end
+```
 
 ##### html_safe makes it unsafe or safe?.
 
