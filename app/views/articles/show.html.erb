@@ -1,0 +1,9 @@
+<h1>Terrible article show page</h1>
+<h3><%= @article.name %></h1>
+<p><%= @article.body %></p>
+
+<p>
+  <% @article.comments.each do |com| %>
+    <%= com.body.html_safe %>
+  <% end %>
+</p>

@@ -1,4 +1,4 @@
 Fabricator(:comment) do
   author { Faker::Name.name }
-  body { Faker::Lorem.sentence(3) }
+  body { Faker::Lorem.sentence }
 end

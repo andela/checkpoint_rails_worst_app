@@ -1,13 +1,10 @@
-<h1> This is a terrible author's index page. One of the worst ever. </h1>
+<h1> This is a terrible authors index page. One of the worst ever. </h1>
 
 <div class="author">
   <% @authors.each do |author| %>
     <h2>My name is <%= author.name %></h2>
     <% author.articles.each do |art| %>
-      <span>I wrote: <%= art.name %></span>
-      <% art.comments.each do |com| %>
-        <%= com.body %>
-      <% end %>
+      <p>I wrote: <span style="text-decoration: underline"><%= link_to art.name, articles_show_path(art) %> </span></p>
     <% end %>
   <% end %>
 </div>

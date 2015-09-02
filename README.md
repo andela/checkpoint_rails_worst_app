@@ -22,7 +22,7 @@ Complete this tutorial first:
 * add an index to the right columns
 * implement caching
 * implement eager loading vs lazy loading on the right pages.
-* replace ruby lookups with ActiveRecord methods.
+* replace Ruby lookups with ActiveRecord methods.
 
 
 ##### Ruby vs ActiveRecord
@@ -45,5 +45,25 @@ puts Benchmark.measure {Article.pluck(:id)}
    (3.2ms)  SELECT "articles"."id" FROM "articles"
   0.000000   0.000000   0.000000 (  0.006992)
 ```
-
 The real time is 0.006992 for the AR query. Ruby is about 300% slower.
+
+
+##### html_safe makes it unsafe or safe?.
+
+This is why variable and method naming is important.
+
+In the show.html.erb for articles, we have this code
+
+```ruby
+  <% @articles.comments.each do |com| % >
+    <%= com.body.html_safe %>
+  <% end %>
+```
+
+What's wrong with it?
+
+The danger is if comment body are user-generated input...which they are.
+
+See [here](http://stackoverflow.com/questions/4251284/raw-vs-html-safe-vs-h-to-unescape-html)
+
+Understand now? Fix the problem.
