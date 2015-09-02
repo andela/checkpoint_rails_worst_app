@@ -1,0 +1,13 @@
+<h1> This is a terrible author's index page. One of the worst ever. </h1>
+
+<div class="author">
+  <% @authors.each do |author| %>
+    <h2>My name is <%= author.name %></h2>
+    <% author.articles.each do |art| %>
+      <span>I wrote: <%= art.name %></span>
+      <% art.comments.each do |com| %>
+        <%= com.body %>
+      <% end %>
+    <% end %>
+  <% end %>
+</div>
