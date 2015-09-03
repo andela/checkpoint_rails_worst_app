@@ -11,4 +11,12 @@ class Author < ActiveRecord::Base
   def self.most_prolific_writer
     all.sort_by{|a| a.articles.count }.last
   end
+
+  def self.with_most_upvoted_article
+    all.sort_by do |auth|
+      auth.articles.sort_by do |art|
+        art.upvotes
+      end.last
+    end.last.name
+  end
 end

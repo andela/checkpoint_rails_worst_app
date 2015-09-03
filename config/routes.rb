@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'stats/index'
+
   get 'comments/new'
   post 'comments/create', as: "comments"
 
