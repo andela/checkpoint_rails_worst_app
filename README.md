@@ -11,15 +11,24 @@ git clone git@github.com:andela/checkpoint_rails_worst_app.git
 Currently, the home page takes this long to load:
 
 ```bash
-Rendered author/index.html.erb within layouts/application (12392.4ms)
-Completed 200 OK in 12677ms (Views: 6560.1ms | ActiveRecord: 6108.7ms)
+Rendered author/index.html.erb within layouts/application (3521.1ms)
+Completed 200 OK in 3544ms (Views: 2697.2ms | ActiveRecord: 845.6ms)
 ```
 
-The view takes 6 seconds to load. The AR querying takes 6 seconds to load. The page takes 12 seconds to load. That's not great.
+The view takes 2.5 seconds to load. The AR querying takes 1 second to load. The page takes 3.5 seconds to load. That's not great.
 
-What can we do?
+The stats page is even worse:
 
-Well, let's focus on improving the view and the querying!
+```bash
+Rendered stats/index.html.erb within layouts/application (4.2ms)
+Completed 200 OK in 6322ms (Views: 21.5ms | ActiveRecord: 1663.7ms)
+```
+
+It took 6 seconds to load and a lot of the time taken isn't even in the ActiveRecord querying or the view. It's the creation of ruby objects that is taking a lot of time. This will be explained in further detail below.
+
+So, **What can we do?**
+
+Well, let's focus on improving the view and the AR querying first!
 
 Complete this tutorial first:
 [Jumpstart Lab Tutorial on Querying](http://tutorials.jumpstartlab.com/topics/performance/queries.html)
@@ -32,7 +41,7 @@ Complete this tutorial first:
 * fix html_safe issue.
 * page cache or fragment cache the home page
 
-##### Index some columns. But what should we index
+##### Index some columns. But what should we index?
 
 [great explanation of how to index columns and when](http://tutorials.jumpstartlab.com/topics/performance/queries.html#indices)
 
@@ -50,6 +59,7 @@ end
 Let's try to get some ids from our Article model.
 
 Look at Ruby:
+
 ```ruby
 puts Benchmark.measure {Article.select(:id).collect{|a| a.id}}
   Article Load (2.6ms)  SELECT "articles"."id" FROM "articles"
@@ -82,6 +92,8 @@ def self.with_most_upvoted_article
   end.last
 end
 ```
+
+Both methods use Ruby methods (sort_by) instead of ActiveRecord. Let's fix that.
 
 ##### html_safe makes it unsafe or safe?.
 
