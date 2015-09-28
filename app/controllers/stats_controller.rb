@@ -5,6 +5,5 @@ class StatsController < ApplicationController
     @author_with_most_upvoted_article = Author.with_most_upvoted_article
     @article_names = Article.all_names
     @short_articles = Article.articles_with_names_less_than_20_char
-
   end
 end

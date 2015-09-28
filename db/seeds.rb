@@ -1,4 +1,4 @@
-Author.generate_authors(2000)
+Author.generate_authors(3000)
 
 author1 = Author.create(name: "jeff", created_at: Date.new(2014,1,1))
 author1.articles << Article.create(name: "5 upvoted article",

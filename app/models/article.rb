@@ -3,6 +3,7 @@ class Article < ActiveRecord::Base
   has_many :comments
 
   def self.all_names
+    # pluck(:name)
     all.map do |art|
       art.name
     end

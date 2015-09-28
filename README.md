@@ -118,4 +118,12 @@ Understand now? Fix the problem.
 
 ##### Caching
 
+Our main view currently takes 4 seconds to load
+
+```bash
+Rendered author/index.html.erb within layouts/application (5251.7ms)
+Completed 200 OK in 5269ms (Views: 4313.1ms | ActiveRecord: 955.6ms)
+```
+
+Let's fix that. Read this:
 [fragment caching](http://guides.rubyonrails.org/caching_with_rails.html#fragment-caching)
