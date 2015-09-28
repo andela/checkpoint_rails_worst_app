@@ -34,12 +34,13 @@ Complete this tutorial first:
 [Jumpstart Lab Tutorial on Querying](http://tutorials.jumpstartlab.com/topics/performance/queries.html)
 
 # Requirements for this checkpoint
-* add an index to the right columns
-* implement caching
+* add an index to the correct columns
 * implement eager loading vs lazy loading on the right pages.
 * replace Ruby lookups with ActiveRecord methods.
 * fix html_safe issue.
-* page cache or fragment cache the home page
+* page cache or fragment cache the root page.
+* No need for testing, but you need to get the time down to a reasonable time for both pages.
+* The root page needs to implement includes, pagination, and fragment caching.
 
 ##### Index some columns. But what should we index?
 
