@@ -11,20 +11,23 @@ git clone git@github.com:andela/checkpoint_rails_worst_app.git
 Currently, the home page takes this long to load:
 
 ```bash
-Rendered author/index.html.erb within layouts/application (3521.1ms)
-Completed 200 OK in 3544ms (Views: 2697.2ms | ActiveRecord: 845.6ms)
+...
+Article Load (0.5ms)  SELECT "articles".* FROM "articles" WHERE "articles"."author_id" = ?  [["author_id", 3000]]
+Article Load (0.5ms)  SELECT "articles".* FROM "articles" WHERE "articles"."author_id" = ?  [["author_id", 3001]]
+Rendered author/index.html.erb within layouts/application (9615.5ms)
+Completed 200 OK in 9793ms (Views: 7236.5ms | ActiveRecord: 2550.1ms)
 ```
 
-The view takes 2.5 seconds to load. The AR querying takes 1 second to load. The page takes 3.5 seconds to load. That's not great.
+The view takes 7.2 seconds to load. The AR querying takes 2.5 second to load. The page takes close to 10 seconds to load. That's not great at all. That's just awful.
 
 The stats page is even worse:
 
 ```bash
-Rendered stats/index.html.erb within layouts/application (4.2ms)
-Completed 200 OK in 6322ms (Views: 21.5ms | ActiveRecord: 1663.7ms)
+Rendered stats/index.html.erb within layouts/application (9.9ms)
+Completed 200 OK in 16197ms (Views: 38.0ms | ActiveRecord: 4389.4ms)
 ```
 
-It took 6 seconds to load and a lot of the time taken isn't even in the ActiveRecord querying or the view. It's the creation of ruby objects that is taking a lot of time. This will be explained in further detail below.
+It took 16 seconds to load and a lot of the time taken isn't even in the ActiveRecord querying or the view. It's the creation of ruby objects that is taking a lot of time. This will be explained in further detail below.
 
 So, **What can we do?**
 
