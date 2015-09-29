@@ -1,10 +1,23 @@
-# Andela Rails Checkpoint #3
+# Andela Rails Checkpoint #4
 
 1. Git clone this app and follow the instructions below.
 
 ```bash
 git clone git@github.com:andela/checkpoint_rails_worst_app.git
 ```
+2. Run migrations
+
+```bash
+rake db:migrate
+```
+
+3. Run seeds for the database
+
+```bash
+rake db:seed
+```
+
+##Problem Description
 
 ### This is one of the worst performing Rails apps ever.
 
