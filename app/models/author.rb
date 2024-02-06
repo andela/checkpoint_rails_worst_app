@@ -1,4 +1,4 @@
-class Author < ActiveRecord::Base
+class Author < ApplicationRecord
   has_many :articles
 
   def self.generate_authors(count=1000)
